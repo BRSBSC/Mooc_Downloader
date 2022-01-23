@@ -21,6 +21,11 @@ class DownloadFailed(Exception):
 def aria2_download_file(url, filename, dirname='.'):
     cnt = 0
     while cnt < 3:
+        with open('E:\\names.txt', 'a+', encoding='utf-8') as f:
+            f.write(url+'\n#'+filename+'\n')
+        with open('E:\\urls.txt', 'a+', encoding='utf-8') as f:
+            f.write(url+'\n')
+        return
         p = None
         try:
             cmd = aira2_cmd.format(url=url, dirname=dirname, filename=filename)
